@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthcare Homepage with Chatbot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .chat-container {
+      width: 400px;
+      max-width: 100%;
+      margin: 50px auto;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: green;
+      color: white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .chat-header img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      height: 400px;
+    }
+    .message {
+      padding: 10px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      max-width: 80%;
+      line-height: 1.4;
+    }
+    .user {
+      background-color: green;
+      color: white;
+      align-self: flex-end;
+    }
+    .bot {
+      background-color: #f0f0f0;
+      align-self: flex-start;
+      display: flex;
+      align-items: flex-start;
+    }
+    .bot img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
+    .chat-input button {
+      background-color: green;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      margin-left: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+  <!-- Section 1: Logo Homepage -->
+  <section class="h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-green-50">
+    <img src="C:\Users\HP\OneDrive\Documents\logo.jpg" alt="Healthcare Logo" class="w-60 h-60 object-contain mb-4" />
+    <h1 class="text-4xl font-bold text-green-700">Welcome to <span class="text-gray-800">HEALTHCARE</span></h1>
+    <a href="#nav" class="mt-10 text-green-600 hover:text-green-800 font-semibold underline text-lg">Go to Site →</a>
+  </section>
+  <!-- Section 2: Navigation Page -->
+  <section id="nav" class="min-h-screen bg-white px-6 py-10">
+    <header class="flex items-center justify-between mb-10 shadow-md px-4 py-3">
+      <div class="flex items-center space-x-4">
+        <img src="C:\Users\HP\OneDrive\Documents\logo.jpg" alt="Healthcare Logo" class="h-12 w-12 rounded-full" />
+        <span class="text-2xl font-bold text-green-700">HEALTH<span class="text-gray-700">CARE</span></span>
+      </div>
+      <nav class="space-x-6 text-lg">
+        <a href="#home" class="text-gray-700 hover:text-green-700">Home</a>
+        <a href="#about" class="text-gray-700 hover:text-green-700">About</a>
+        <a href="#contact" class="text-gray-700 hover:text-green-700">Contact</a>
+        <a href="#chatbot" class="text-gray-700 hover:text-green-700">Chatbot</a>
+      </nav>
+    </header>
+    <section id="home" class="py-10">
+      <h2 class="text-3xl font-bold mb-4 text-green-800">Home</h2>
+      <pre class="text-gray-700">Welcome to HealthCare – your trusted AI companion for early disease detection.  
+Describe your symptoms and receive a preliminary analysis based on our advanced medical knowledge base.</pre>
+    </section>
+    <section id="about" class="py-10">
+      <h2 class="text-3xl font-bold mb-4 text-green-800">About Us</h2>
+      <pre class="text-gray-700">
+Our platform helps users:
+- Identify potential illnesses based on entered symptoms
+- Understand common health conditions
+Your health is our priority. Begin your symptom check now and take the first step toward better care.</pre>
+    </section>
+    <section id="contact" class="py-10">
+      <h2 class="text-3xl font-bold mb-4 text-green-800">Contact</h2>
+      <pre class="text-gray-700">Reach out to us via email or phone. We’re available 24/7 to assist you.
+Contact No: +0264-868-852
+Email: kchhospital@gmail.com</pre>
+    </section>
+  </section>
+  <!-- Section 3: Chatbot -->
+  <section id="chatbot" class="py-10 bg-gray-100">
+    <h2 class="text-center text-3xl font-bold text-green-700 mb-6">Dr. SymptomBot</h2>
+    <div class="chat-container">
+      <div class="chat-header">
+        <img src="C:\Users\HP\OneDrive\Documents\robort.jpg" alt="Bot" />
+        <div>
+          <strong>Dr. SymptomBot</strong>
+          <div style="font-size: 12px">Online</div>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+          <img src="file:///C:/Users/HP/OneDrive/Documents/robort.jpg" alt="Bot" />
+          <div>Hello! I'm Dr. SymptomBot. Tell me your symptoms 😊</div>
+        </div>
+      </div>
+      <form class="chat-input" id="chatForm">
+        <input type="text" id="userInput" placeholder="Type your message..." />
+        <button type="submit">➤</button>
+      </form>
+    </div>
+  </section>
+  <!-- Chatbot Script -->
+  <script>
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('userInput');
+    const messages = document.getElementById('chatMessages');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const userMsg = input.value.trim();
+      if (!userMsg) return;
+      const userDiv = document.createElement('div');
+      userDiv.className = 'message user';
+      userDiv.innerText = userMsg;
+      messages.appendChild(userDiv);
+      messages.scrollTop = messages.scrollHeight;
+      setTimeout(() => {
+        const botDiv = document.createElement('div');
+        botDiv.className = 'message bot';
+        const botImg = document.createElement('img');
+        botImg.src = "file:///C:/Users/HP/OneDrive/Documents/robort.jpg";
+        botImg.alt = 'Bot';
+        const botText = document.createElement('div');
+        botText.innerText = getBotReply(userMsg);
+        botDiv.appendChild(botImg);
+        botDiv.appendChild(botText);
+        messages.appendChild(botDiv);
+        messages.scrollTop = messages.scrollHeight;
+      }, 1000);
+      input.value = '';
+    });
+    function getBotReply(message) {
+      if (message.toLowerCase().includes('fever')) {
+        return 'You may be experiencing flu or an infection. Please monitor and consult a doctor if it persists.';
+      }
+      return "I'm still learning. Can you describe more symptoms?";
+    }
+  </script>
+</body>
+</html
+```
